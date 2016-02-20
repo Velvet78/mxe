@@ -67,7 +67,17 @@ function compilesecp {
         AR=$MXE_PATH/usr/bin/i686-w64-mingw32.static-ar \
         CFLAGS="-DSTATICLIB -I$MXE_PATH/usr/i686-w64-mingw32.static/include" \
         LDFLAGS="-L$MXE_PATH/usr/i686-w64-mingw32.static/lib" \
-        make install
+        ./autogen.sh
+
+	./configure \
+                --disable-replication \
+                --enable-mingw \
+                --enable-cxx \
+                --host x86 \
+                --prefix=$MXE_PATH/usr/i686-w64-mingw32.static
+
+	make
+	make install
 }
 
 echo Compiling the SECP256k1
@@ -75,11 +85,19 @@ cd $LOCATION/secp256k1
 compilesecp
 cd $LOCATION
 
-function gmp { 
+function compilegmp {
         CC=$MXE_PATH/usr/bin/i686-w64-mingw32.static-gcc \
         AR=$MXE_PATH/usr/bin/i686-w64-mingw32.static-ar \
         CFLAGS="-DSTATICLIB -I$MXE_PATH/usr/i686-w64-mingw32.static/include" \
-        LDFLAGS="-L$MXE_PATH/usr/i686-w64-mingw32.static/lib" \
+        LDFLAGS="-L$MXE_PATH/usr/i686-w64-mingw32.static/lib"
+
+	./configure --disable-replication \
+                --enable-mingw \
+                --enable-cxx \
+                --host x86 \
+                --prefix=$MXE_PATH/usr/i686-w64-mingw32.static
+
+	make
         make install
 }
 
@@ -88,16 +106,24 @@ cd $LOCATION/gmp
 compilegmp
 cd $LOCATION
 
-function event { 
+function cevent { 
         CC=$MXE_PATH/usr/bin/i686-w64-mingw32.static-gcc \
         AR=$MXE_PATH/usr/bin/i686-w64-mingw32.static-ar \
         CFLAGS="-DSTATICLIB -I$MXE_PATH/usr/i686-w64-mingw32.static/include" \
-        LDFLAGS="-L$MXE_PATH/usr/i686-w64-mingw32.static/lib" \
+        LDFLAGS="-L$MXE_PATH/usr/i686-w64-mingw32.static/lib"
+
         ./configure \
+                --disable-replication \
+                --enable-mingw \
+                --enable-cxx \
+                --host x86 \
+                --prefix=$MXE_PATH/usr/i686-w64-mingw32.static
+
+	make
 	make install
 }
 
 echo Compiling the Event Libraries
 cd $LOCATION/event
-compilelibevent
+cevent
 cd $LOCATION
