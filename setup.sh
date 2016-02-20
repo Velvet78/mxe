@@ -9,8 +9,9 @@ echo
 echo We are now installing.....
 
 sudo apt-get update
-sudo apt-get install -y  p7zip-full autoconf automake autopoint bash bison bzip2 cmake flex gettext git g++ gperf intltool libffi-dev libtool libltdl-dev libssl-dev libxml-parser-perl make openssl patch perl pkg-config python ruby scons sed unzip wget xz-utils
+sudo apt-get install -y p7zip-full autoconf automake autopoint bash bison bzip2 cmake flex gettext git g++ gperf intltool libffi-dev libtool libltdl-dev libssl-dev libxml-parser-perl make openssl patch perl pkg-config python ruby scons sed unzip wget xz-utils
 sudo apt-get install -y g++-multilib libc6-dev-i386
+sudo apt-get install -y autoconf automake autopoint bash bison bzip2 p7zip-full cmake flex gettext git g++ gperf intltool libffi-dev libtool libltdl-dev libssl-dev libxml-parser-perl make openssl patch perl pkg-config python ruby scons sed unzip wget xz-utils
 
 echo
 echo We will now compile the libraries...
