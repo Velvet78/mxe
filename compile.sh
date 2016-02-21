@@ -1,14 +1,18 @@
 #!/bin/bash
 
-echo Welcome to the "House" of the Lord
-echo
-echo We have setup some variable here so if there is/are error(s)
-echo Please look at the variables.
-echo
-
-LOCATION=/media/administrator/Boss/mxe
+LOCATION=/media/administrator/Boss/compiler
+PATH=$LOCATION/mxe/usr/bin:$PATH
 MXE_INCLUDE_PATH=$LOCATION/mxe/usr/i686-w64-mingw32.static/include
 MXE_LIB_PATH=$LOCATION/mxe/usr/i686-w64-mingw32.static/lib
+
+echo Welcome to the House of the Lord
+echo
+echo We have setup some variable here so if there is/are error
+echo Please look at the variables.
+echo
+echo We are assuming, this script is situated at $LOCATION
+
+cd working
 
 i686-w64-mingw32.static-qmake-qt5 \
 	BOOST_LIB_SUFFIX=-mt \
